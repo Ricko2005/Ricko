@@ -51,7 +51,7 @@
     .mobile-menu .mobile-btn:hover { background: rgba(255,255,255,0.1); }
 
     /* ══ BANNER ══ */
-    .banner { min-height: 90vh; padding-top: 100px; padding-bottom: 0; display: grid; grid-template-columns: 55% 45%; align-items: center; padding-left: 80px; padding-right: 0; background: var(--bg); position: relative; overflow: hidden; max-width: 1280px; margin: 0 auto; width: 100%; }
+    .banner { min-height: 90vh; padding-top: 100px; display: grid; grid-template-columns: 55% 45%; align-items: center; padding-left: 80px; background: var(--bg); position: relative; overflow: hidden; }
     .banner-left { padding-right: 60px; animation: fadeUp 0.7s ease both; }
     .hello-tag { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid #ddd; border-radius: 50px; padding: 7px 16px; font-size: 13px; font-weight: 500; color: #555; margin-bottom: 28px; font-family: 'DM Sans', sans-serif; }
     .banner-title { font-family: 'Unbounded', sans-serif; font-size: clamp(28px, 3.6vw, 52px); font-weight: 800; color: var(--black); line-height: 1.12; margin-bottom: 20px; letter-spacing: -1px; }
@@ -73,14 +73,14 @@
     .badge-certifie { background: var(--blue); color: var(--white); top: 22%; right: 5%; animation-delay: 0.5s; }
 
     /* ══ TICKER ══ */
-    .ticker { background: var(--black); overflow: hidden; white-space: nowrap; padding: 13px 0; margin: 0; display: block; }
+    .ticker { background: var(--blue-dark); overflow: hidden; white-space: nowrap; padding: 13px 0; }
     .ticker-track { display: inline-flex; animation: ticker 24s linear infinite; will-change: transform; }
     .ticker-item { display: inline-flex; align-items: center; gap: 18px; padding: 0 28px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 1px; }
     .ticker-dot { width: 6px; height: 6px; border-radius: 50%; background: #4A90D9; display: inline-block; opacity: 0.7; }
 
     /* ══ SERVICES ══ */
-    #services { padding: 80px 0 60px; background: var(--blue-dark); position: relative; overflow: hidden; width: 100%; margin-top: 0; }
-    .srv-wrap { max-width: 1280px; margin: 0 auto; overflow: hidden; padding: 0 80px; }
+    #services { padding: 80px 40px 60px; background: var(--blue-dark); position: relative; overflow: hidden; }
+    .srv-wrap { max-width: 1100px; margin: 0 auto; overflow: hidden; }
     .srv-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap; }
     .srv-head-left { display: flex; flex-direction: column; gap: 14px; }
     .srv-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 3px; }
@@ -130,7 +130,7 @@
       grid-template-columns: 45% 55%;
       align-items: center;
       gap: 60px;
-      max-width: 1280px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
@@ -302,8 +302,7 @@
       .badge-professionnel { bottom: 28%; left: 1%; }
       .badge-creatif { bottom: 12%; right: 1%; }
       .badge-certifie { top: 18%; right: 2%; }
-      #services { padding: 80px 0; }
-      .srv-wrap { padding: 0 32px; }
+      #services { padding: 80px 24px; }
       .srv-blobs { grid-template-columns: 1fr; gap: 24px; max-width: 380px; margin: 0 auto; }
       .srv-blob-wrap.mid { transform: scale(1); }
       .srv-blob-wrap.mid:hover { transform: translateY(-10px) scale(1.03); }
