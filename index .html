@@ -220,6 +220,12 @@
     .service-step .step-content { padding-right: 20px; }
     .service-step.reverse .step-content { padding-left: 20px; }
     .service-step:last-child { border-bottom: none; }
+    .service-step .step-visual,
+.service-step.reverse .step-visual {
+  display: flex;
+  justify-content: center !important;
+  padding: 0 !important;
+}
     .step-content { padding: 60px 20px 60px 80px; display: flex; flex-direction: column; gap: 18px; }
     .service-step:not(.reverse) .step-visual { justify-content: flex-start; padding-left: 20px; }
     .step-index { width: 36px; height: 3px; background: var(--blue); border-radius: 2px; }
@@ -281,6 +287,36 @@
       .about-stats { gap: 20px; }
       .stat-num { font-size: 28px; }
     }
+
+    @media (max-width: 480px) {
+  #about {
+    padding: 40px 20px;
+  }
+
+  #about img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .about-stats {
+    flex-direction: row;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .about-stat {
+    align-items: center;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: 26px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+  }
+}
   </style>
 </head>
 <body>
