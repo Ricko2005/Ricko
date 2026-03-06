@@ -123,11 +123,32 @@
       .banner { grid-template-columns: 1fr; padding: 100px 32px 0; min-height: auto; padding-bottom: 0; }
       .banner-left { padding-right: 0; }
       .banner-right { height: 85vw; min-height: 320px; max-height: 500px; margin-top: 24px; }
+      /* Sur mobile : numéro en arrière-plan du bloc texte, pas de colonne séparée */
       .service-step, .service-step.reverse { grid-template-columns: 1fr; }
-      .service-step .step-content { order: 2; padding: 40px 28px 20px; }
-      .service-step .step-visual, .service-step.reverse .step-visual { order: 1; justify-content: center; padding: 0; min-height: 200px; }
-      .service-step.reverse .step-content { order: 2; padding: 40px 28px 20px; }
-      .step-num { font-size: 100px; }
+      .service-step .step-visual,
+      .service-step.reverse .step-visual {
+        display: none; /* on masque le bloc numéro séparé */
+      }
+      .service-step .step-content { order: 1; padding: 36px 28px; position: relative; overflow: hidden; }
+      .service-step.reverse .step-content { order: 1; padding: 36px 28px; }
+      /* Numéro en watermark derrière le texte */
+      .service-step .step-content::before {
+        content: attr(data-num);
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: 'Unbounded', sans-serif;
+        font-size: 110px;
+        font-weight: 900;
+        color: transparent;
+        -webkit-text-stroke: 2px var(--blue);
+        opacity: 0.12;
+        line-height: 1;
+        letter-spacing: -4px;
+        pointer-events: none;
+        user-select: none;
+      }
       #about { gap: 40px; margin: 24px 16px; }
       #realisations { padding: 60px 0; }
       .real-header { padding: 0 32px; }
@@ -258,7 +279,7 @@
 
   <section id="services">
     <div class="service-step">
-      <div class="step-content">
+      <div class="step-content" data-num="01">
         <div class="step-index"></div>
         <h3 class="step-title">Site<br>Vitrine</h3>
         <p class="step-text">Donnez une image professionnelle à votre activité. Je conçois des sites vitrines élégants, rapides et optimisés pour le référencement, qui inspirent confiance dès le premier regard.</p>
@@ -266,7 +287,7 @@
       <div class="step-visual"><span class="step-num">01</span></div>
     </div>
     <div class="service-step reverse">
-      <div class="step-content">
+      <div class="step-content" data-num="02">
         <div class="step-index"></div>
         <h3 class="step-title">Boutique<br>en Ligne</h3>
         <p class="step-text">Vendez vos produits 24h/24 avec une boutique e-commerce performante et intuitive. Paiement sécurisé, gestion des stocks, expérience d'achat fluide — tout est pensé pour convertir.</p>
@@ -274,7 +295,7 @@
       <div class="step-visual"><span class="step-num">02</span></div>
     </div>
     <div class="service-step">
-      <div class="step-content">
+      <div class="step-content" data-num="03">
         <div class="step-index"></div>
         <h3 class="step-title">Landing<br>Page</h3>
         <p class="step-text">Une page unique, percutante et orientée conversion. Idéale pour lancer un produit, une offre ou une campagne marketing — chaque élément est pensé pour transformer le visiteur en client.</p>
@@ -282,7 +303,7 @@
       <div class="step-visual"><span class="step-num">03</span></div>
     </div>
     <div class="service-step reverse">
-      <div class="step-content">
+      <div class="step-content" data-num="04">
         <div class="step-index"></div>
         <h3 class="step-title">Application<br>SaaS</h3>
         <p class="step-text">Vous avez une idée de produit digital ? Je développe votre application web SaaS de A à Z : architecture solide, interface soignée et fonctionnalités pensées pour vos utilisateurs.</p>
