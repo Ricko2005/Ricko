@@ -10,15 +10,7 @@
     :root { --blue: #2B6CB0; --blue-dark: #1A3A5C; --black: #0D0D0D; --white: #FFFFFF; --bg: #F8F8F8; }
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); overflow-x: hidden; }
 
-    /* ===== HEADER ===== */
-    header {
-      position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
-      z-index: 100; background: var(--black); border-radius: 50px; height: 82px;
-      width: calc(100% - 80px); max-width: 1100px;
-      display: grid; grid-template-columns: 1fr auto 1fr;
-      align-items: center; padding: 0 28px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    }
+    header { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 100; background: var(--black); border-radius: 50px; height: 82px; width: calc(100% - 80px); max-width: 1100px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0 28px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
     .nav-left { display: flex; gap: 28px; align-items: center; }
     .nav-right { display: flex; gap: 28px; align-items: center; justify-content: flex-end; }
     .logo { display: flex; align-items: center; gap: 9px; text-decoration: none; justify-content: center; }
@@ -35,28 +27,13 @@
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu {
-      display: none; position: fixed; top: 90px; left: 50%; transform: translateX(-50%);
-      width: calc(100% - 40px); max-width: 400px; background: var(--black);
-      border-radius: 20px; padding: 20px; z-index: 99;
-      flex-direction: column; gap: 4px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.07);
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.25s, transform 0.25s;
-      transform: translateX(-50%) translateY(-8px);
-    }
+    .mobile-menu { display: none; position: fixed; top: 90px; left: 50%; transform: translateX(-50%); width: calc(100% - 40px); max-width: 400px; background: var(--black); border-radius: 20px; padding: 20px; z-index: 99; flex-direction: column; gap: 4px; box-shadow: 0 16px 40px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.07); opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s; transform: translateX(-50%) translateY(-8px); }
     .mobile-menu.open { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
     .mobile-menu a { text-decoration: none; color: rgba(255,255,255,0.7); font-size: 15px; padding: 12px 16px; border-radius: 12px; display: block; transition: background 0.2s; font-family: 'DM Sans', sans-serif; }
     .mobile-menu a:hover { background: rgba(255,255,255,0.07); color: #fff; }
     .mobile-menu .mobile-btn { margin-top: 8px; padding: 13px 20px; border: 1.5px solid rgba(255,255,255,0.25); border-radius: 50px; background: transparent; color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; text-align: center; width: 100%; }
 
-    /* ===== BANNER ===== */
-    .banner {
-      min-height: 100vh; padding-top: 100px;
-      display: grid; grid-template-columns: 55% 45%;
-      align-items: center; padding-left: 80px;
-      background: var(--bg); position: relative; overflow: hidden;
-    }
+    .banner { min-height: 100vh; padding-top: 100px; display: grid; grid-template-columns: 55% 45%; align-items: center; padding-left: 80px; background: var(--bg); position: relative; overflow: hidden; }
     .banner-left { padding-right: 60px; animation: fadeUp 0.7s ease both; }
     .hello-tag { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid #ddd; border-radius: 50px; padding: 7px 16px; font-size: 13px; font-weight: 500; color: #555; margin-bottom: 28px; }
     .banner-title { font-family: 'DM Sans', sans-serif; font-size: clamp(28px, 3.6vw, 52px); font-weight: 800; color: var(--black); line-height: 1.12; margin-bottom: 20px; letter-spacing: -1px; }
@@ -77,19 +54,13 @@
     .badge-creatif { background: var(--black); color: #fff; bottom: 20%; right: 3%; animation-delay: 1s; }
     .badge-certifie { background: var(--blue); color: #fff; top: 22%; right: 5%; animation-delay: 0.5s; }
 
-    /* ===== TICKER ===== */
     .ticker { background: var(--blue-dark); overflow: hidden; white-space: nowrap; padding: 13px 0; }
     .ticker-track { display: inline-flex; animation: ticker 24s linear infinite; }
     .ticker-item { display: inline-flex; align-items: center; gap: 18px; padding: 0 28px; font-size: 14px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; font-family: 'DM Sans', sans-serif; }
     .ticker-dot { width: 6px; height: 6px; border-radius: 50%; background: #4A90D9; opacity: 0.7; }
 
-    /* ===== SERVICES ===== */
     #services { background: #fff; padding: 10px 0 60px; overflow: hidden; }
     #services > * { max-width: 1100px; margin-left: auto; margin-right: auto; }
-    .services-eyebrow { font-size: 11px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 14px; }
-    .services-title { font-family: 'Unbounded', sans-serif; font-size: clamp(28px, 3vw, 44px); font-weight: 900; color: var(--black); line-height: 1.1; letter-spacing: -1.5px; max-width: 420px; }
-    .services-title span { color: var(--blue); }
-    .services-subtitle { font-size: 14px; color: #999; line-height: 1.8; max-width: 340px; }
     .service-step { display: grid; grid-template-columns: 1fr 1fr; align-items: center; min-height: 320px; border-bottom: 1px solid #ebebeb; position: relative; gap: 0; }
     .service-step:last-child { border-bottom: none; }
     .step-content { padding: 60px 20px 60px 80px; display: flex; flex-direction: column; gap: 18px; }
@@ -97,22 +68,12 @@
     .service-step.reverse .step-content { order: 2; padding-left: 20px; padding-right: 80px; }
     .service-step.reverse .step-visual { order: 1; }
     .step-visual { position: relative; height: 100%; min-height: 320px; display: flex; align-items: center; justify-content: flex-start; padding-left: 20px; overflow: hidden; }
-    .service-step.reverse .step-visual { justify-content: flex-start; padding-left: 20px; }
     .step-index { width: 36px; height: 3px; background: var(--blue); border-radius: 2px; }
     .step-title { font-size: clamp(26px, 2.8vw, 38px); font-weight: 700; color: var(--black); line-height: 1.15; letter-spacing: -0.5px; }
     .step-text { font-size: 14px; color: #999; line-height: 1.8; max-width: 380px; }
-    .step-num {
-      font-size: clamp(130px, 16vw, 200px); font-weight: 900; line-height: 1;
-      color: transparent; -webkit-text-stroke: 2px var(--blue);
-      user-select: none; letter-spacing: -6px;
-      font-family: 'Unbounded', sans-serif; opacity: 0.5;
-    }
+    .step-num { font-size: clamp(130px, 16vw, 200px); font-weight: 900; line-height: 1; color: transparent; -webkit-text-stroke: 2px var(--blue); user-select: none; letter-spacing: -6px; font-family: 'Unbounded', sans-serif; opacity: 0.5; }
 
-    /* ===== ABOUT ===== */
-    #about {
-      display: flex; align-items: center; gap: 60px;
-      padding: 80px; max-width: 1100px; margin: 0 auto;
-    }
+    #about { display: flex; align-items: center; gap: 60px; padding: 80px; max-width: 1100px; margin: 0 auto; }
     #about * { font-family: 'DM Sans', sans-serif; }
     .about-img-wrap { flex-shrink: 0; }
     #about img { width: 450px; height: 450px; object-fit: cover; object-position: top; }
@@ -124,57 +85,114 @@
     .about-stat { display: flex; flex-direction: column; gap: 4px; }
     .stat-num { font-size: 36px; font-weight: 900; color: var(--black); }
     .stat-label { font-size: 13px; color: #999; }
-    .btn-about {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 15px 30px; border: 2px solid var(--blue-dark);
-      border-radius: 50px; background: transparent; color: var(--blue-dark);
-      font-size: 14px; font-weight: 600; cursor: pointer;
-      transition: all 0.25s; width: fit-content; margin-top: 8px;
-    }
+    .btn-about { display: inline-flex; align-items: center; gap: 8px; padding: 15px 30px; border: 2px solid var(--blue-dark); border-radius: 50px; background: transparent; color: var(--blue-dark); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.25s; width: fit-content; margin-top: 8px; }
     .btn-about:hover { background: var(--blue-dark); color: #fff; }
 
-    /* ===== ANIMATIONS ===== */
+    /* ===== RÉALISATIONS ===== */
+    #realisations { width: 100%; padding: 80px 0; background: #fff; }
+
+    .real-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 0 80px; max-width: 1100px; margin: 0 auto 48px; }
+    .real-title { font-family: 'DM Sans', sans-serif; font-size: clamp(26px, 3vw, 42px); font-weight: 800; color: var(--black); line-height: 1.2; letter-spacing: -1px; }
+    .real-title span { color: var(--blue); }
+    .btn-real { display: inline-flex; align-items: center; gap: 8px; padding: 15px 30px; background: var(--blue-dark); color: #fff; border: none; border-radius: 50px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.25s; white-space: nowrap; flex-shrink: 0; }
+    .btn-real:hover { opacity: 0.85; }
+
+    .real-slider-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 0 80px;
+    }
+
+    .real-arrow {
+      position: absolute;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: var(--black);
+      color: #fff; border: none;
+      font-size: 22px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10;
+      top: 50%; transform: translateY(-50%);
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+    }
+    .real-arrow:hover { opacity: 0.75; }
+    .real-arrow:disabled { opacity: 0.25; cursor: default; }
+    #realPrev { left: 8px; }
+    #realNext { right: 8px; }
+
+    .real-slider-viewport {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .real-slider {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.4s ease;
+    }
+
+    .real-slide {
+      flex: 0 0 calc(50% - 12px);
+      flex-shrink: 0;
+      border-radius: 24px;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .real-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    .real-tabs { display: flex; gap: 12px; margin: 32px auto 0; flex-wrap: wrap; padding: 0 80px; max-width: 1100px; }
+    .real-tab { padding: 12px 24px; border-radius: 50px; border: 2px solid #e0e0e0; background: transparent; color: #666; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
+    .real-tab.active { background: var(--blue-dark); border-color: var(--blue-dark); color: #fff; }
+    .real-tab:hover:not(.active) { border-color: var(--black); color: var(--black); }
+
     @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-    /* ===== RESPONSIVE 960px ===== */
     @media (max-width: 960px) {
       header { width: calc(100% - 40px); padding: 0 16px 0 20px; grid-template-columns: auto 1fr auto; }
       .nav-left { display: none; }
       .nav-right a, .nav-right .btn-contact { display: none; }
       .nav-right { gap: 0; }
       .hamburger { display: flex; }
-
       .banner { grid-template-columns: 1fr; padding: 100px 32px 0; min-height: auto; padding-bottom: 0; }
       .banner-left { padding-right: 0; }
       .banner-right { height: 85vw; min-height: 320px; max-height: 500px; margin-top: 24px; }
-
-      .service-step,
-      .service-step.reverse { grid-template-columns: 1fr; }
+      .service-step, .service-step.reverse { grid-template-columns: 1fr; }
       .service-step .step-content { order: 2; padding: 40px 28px 20px; }
-      .service-step .step-visual,
-      .service-step.reverse .step-visual { order: 1; justify-content: center; padding: 0; min-height: 200px; }
+      .service-step .step-visual, .service-step.reverse .step-visual { order: 1; justify-content: center; padding: 0; min-height: 200px; }
       .service-step.reverse .step-content { order: 2; padding: 40px 28px 20px; }
       .step-num { font-size: 100px; }
-
       #about { gap: 40px; margin: 24px 16px; }
+      #realisations { padding: 60px 0; }
+      .real-header { padding: 0 32px; }
+      .real-slider-wrap { padding: 0 56px; }
+      .real-slide { flex: 0 0 100%; }
+      .real-tabs { padding: 0 32px; }
+      #realPrev { left: 4px; }
+      #realNext { right: 4px; }
     }
 
-    /* ===== RESPONSIVE 860px ===== */
     @media (max-width: 860px) {
-      #about {
-        flex-direction: column; padding: 60px 32px;
-        align-items: center; text-align: center;
-      }
+      #about { flex-direction: column; padding: 60px 32px; align-items: center; text-align: center; }
       #about img { width: 280px; height: 280px; }
       .about-title { font-size: 26px; }
       .about-stats { justify-content: center; }
       .about-desc { max-width: 100%; }
       .btn-about { align-self: center; }
+      .real-header { flex-direction: column; gap: 20px; }
     }
 
-    /* ===== RESPONSIVE 600px ===== */
     @media (max-width: 600px) {
       header { width: calc(100% - 24px); top: 12px; height: 56px; padding: 0 14px; }
       .banner { padding: 90px 20px 0; }
@@ -184,7 +202,6 @@
       .banner-right { height: 90vw; min-height: 280px; }
     }
 
-    /* ===== RESPONSIVE 480px ===== */
     @media (max-width: 480px) {
       #about { padding: 40px 20px; }
       #about img { width: 300px; height: 300px; }
@@ -194,6 +211,11 @@
       .stat-num { font-size: 26px; }
       .stat-label { font-size: 11px; }
       .step-num { font-size: 80px; }
+      #realisations { padding: 40px 0; }
+      .real-header { padding: 0 20px; }
+      .real-slider-wrap { padding: 0 48px; }
+      .real-arrow { width: 40px; height: 40px; font-size: 16px; }
+      .real-tabs { padding: 0 20px; }
     }
   </style>
 </head>
@@ -210,7 +232,7 @@
       <span class="logo-text">Ricko<span>.</span></span>
     </a>
     <nav class="nav-right">
-      <a href="#">Réalisations</a>
+      <a href="#realisations">Réalisations</a>
       <a href="#">Témoignages</a>
       <button class="btn-contact">Me Contacter</button>
       <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -223,12 +245,11 @@
     <a href="#" class="active">Accueil</a>
     <a href="#about">À Propos</a>
     <a href="#services">Services</a>
-    <a href="#">Projets</a>
+    <a href="#realisations">Réalisations</a>
     <a href="#">Contact</a>
     <button class="mobile-btn">Me Contacter</button>
   </div>
 
-  <!-- BANNER -->
   <section class="banner">
     <div class="banner-left">
       <div class="hello-tag">Hi 👋 !</div>
@@ -261,7 +282,6 @@
     </div>
   </section>
 
-  <!-- TICKER -->
   <div class="ticker">
     <div class="ticker-track">
       <span class="ticker-item">Développement Web <span class="ticker-dot"></span></span>
@@ -279,60 +299,41 @@
     </div>
   </div>
 
-  <!-- SERVICES -->
   <section id="services">
-
-    <!-- Service 1 -->
     <div class="service-step">
       <div class="step-content">
         <div class="step-index"></div>
         <h3 class="step-title">Site<br>Vitrine</h3>
         <p class="step-text">Donnez une image professionnelle à votre activité. Je conçois des sites vitrines élégants, rapides et optimisés pour le référencement, qui inspirent confiance dès le premier regard.</p>
       </div>
-      <div class="step-visual">
-        <span class="step-num">01</span>
-      </div>
+      <div class="step-visual"><span class="step-num">01</span></div>
     </div>
-
-    <!-- Service 2 -->
     <div class="service-step reverse">
       <div class="step-content">
         <div class="step-index"></div>
         <h3 class="step-title">Boutique<br>en Ligne</h3>
         <p class="step-text">Vendez vos produits 24h/24 avec une boutique e-commerce performante et intuitive. Paiement sécurisé, gestion des stocks, expérience d'achat fluide — tout est pensé pour convertir.</p>
       </div>
-      <div class="step-visual">
-        <span class="step-num">02</span>
-      </div>
+      <div class="step-visual"><span class="step-num">02</span></div>
     </div>
-
-    <!-- Service 3 -->
     <div class="service-step">
       <div class="step-content">
         <div class="step-index"></div>
         <h3 class="step-title">Landing<br>Page</h3>
         <p class="step-text">Une page unique, percutante et orientée conversion. Idéale pour lancer un produit, une offre ou une campagne marketing — chaque élément est pensé pour transformer le visiteur en client.</p>
       </div>
-      <div class="step-visual">
-        <span class="step-num">03</span>
-      </div>
+      <div class="step-visual"><span class="step-num">03</span></div>
     </div>
-
-    <!-- Service 4 -->
     <div class="service-step reverse">
       <div class="step-content">
         <div class="step-index"></div>
         <h3 class="step-title">Application<br>SaaS</h3>
         <p class="step-text">Vous avez une idée de produit digital ? Je développe votre application web SaaS de A à Z : architecture solide, interface soignée et fonctionnalités pensées pour vos utilisateurs.</p>
       </div>
-      <div class="step-visual">
-        <span class="step-num">04</span>
-      </div>
+      <div class="step-visual"><span class="step-num">04</span></div>
     </div>
-
   </section>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="about-img-wrap">
       <img src="images/Vrai.png" alt="Romaric TOLOFON">
@@ -341,20 +342,38 @@
       <h2 class="about-title">Pourquoi <span>me confier</span><br>votre projet web ?</h2>
       <p class="about-desc">Votre site doit être votre meilleur commercial. Je crée des expériences web sur-mesure qui captivent vos visiteurs et les transforment en clients.</p>
       <div class="about-stats">
-        <div class="about-stat">
-          <span class="stat-num">+80</span>
-          <span class="stat-label">Projets réalisés</span>
-        </div>
-        <div class="about-stat">
-          <span class="stat-num">2 ans</span>
-          <span class="stat-label">D'expérience</span>
-        </div>
-        <div class="about-stat">
-          <span class="stat-num">98%</span>
-          <span class="stat-label">Clients satisfaits</span>
-        </div>
+        <div class="about-stat"><span class="stat-num">+80</span><span class="stat-label">Projets réalisés</span></div>
+        <div class="about-stat"><span class="stat-num">2 ans</span><span class="stat-label">D'expérience</span></div>
+        <div class="about-stat"><span class="stat-num">98%</span><span class="stat-label">Clients satisfaits</span></div>
       </div>
       <button class="btn-about">Discutons de votre projet ↗</button>
+    </div>
+  </section>
+
+  <section id="realisations">
+    <div class="real-header">
+   
+    </div>
+
+    <div class="real-slider-wrap">
+      <button class="real-arrow" id="realPrev">&#8592;</button>
+      <div class="real-slider-viewport">
+        <div class="real-slider" id="realSlider">
+          <div class="real-slide"><img src="images/visuel1.png" alt="Projet 1"></div>
+          <div class="real-slide"><img src="images/Visuel2.png" alt="Projet 2"></div>
+          <div class="real-slide"><img src="images/Visuel3.png" alt="Projet 3"></div>
+          <div class="real-slide"><img src="images/Visuel 4.png" alt="Projet 4"></div>
+          <div class="real-slide"><img src="images/Visuel5.png" alt="Projet 5"></div>
+          <div class="real-slide"><img src="images/Visuel3.png" alt="Projet 6"></div>
+        </div>
+      </div>
+      <button class="real-arrow" id="realNext">&#8594;</button>
+    </div>
+
+    <div class="real-tabs">
+      <button class="real-tab active">Site vitrine</button>
+      <button class="real-tab">Boutique en ligne</button>
+      <button class="real-tab">Site One Page</button>
     </div>
   </section>
 
@@ -380,6 +399,38 @@
         menu.style.display = 'none';
       }
     });
+
+    const slider  = document.getElementById('realSlider');
+    const prevBtn = document.getElementById('realPrev');
+    const nextBtn = document.getElementById('realNext');
+    const slides  = slider.querySelectorAll('.real-slide');
+    const total   = slides.length;
+    let current   = 0;
+
+    function getVisible() { return window.innerWidth <= 960 ? 1 : 2; }
+
+    function updateSlider() {
+      const slideW = slides[0].offsetWidth;
+      const gap    = 24;
+      slider.style.transform = `translateX(-${current * (slideW + gap)}px)`;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current >= total - getVisible();
+    }
+
+    prevBtn.addEventListener('click', () => { if (current > 0) { current--; updateSlider(); } });
+    nextBtn.addEventListener('click', () => { if (current < total - getVisible()) { current++; updateSlider(); } });
+
+    document.querySelectorAll('.real-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.real-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        current = 0;
+        updateSlider();
+      });
+    });
+
+    window.addEventListener('resize', () => { current = 0; updateSlider(); });
+    updateSlider();
   </script>
 </body>
 </html>
