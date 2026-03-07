@@ -377,10 +377,8 @@
       #faq { padding: 48px 0 60px; }
       .faq-title { font-size: 24px; margin-bottom: 32px; }
       .faq-question span { font-size: 15px; }
-      .temo-wrap { padding: 0 28px; }
-      .temo-head { flex-direction: column; align-items: flex-start; gap: 20px; }
-      .temo-score { align-items: flex-start; }
-      .temo-card { flex: 0 0 300px; }
+      .temo-hero { padding: 0 24px; }
+      .temo-card { flex: 0 0 300px; padding: 22px 20px; }
     }
     @media (max-width: 860px) {
       #about { flex-direction: column; padding: 60px 32px; align-items: center; text-align: center; }
@@ -389,10 +387,35 @@
       .about-stats { justify-content: center; }
       .about-desc { max-width: 100%; }
       .btn-about { align-self: center; }
-      .real-header { flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; padding: 0 20px; margin-bottom: 28px; }
-      .real-title { font-size: clamp(18px, 5vw, 24px); line-height: 1.25; }
+      .real-header { flex-direction: column; align-items: center; text-align: center; gap: 16px; padding: 0 24px; margin-bottom: 28px; }
+      .real-title { font-size: clamp(22px, 6vw, 28px); text-align: center; line-height: 1.25; }
       .btn-real { padding: 11px 18px; font-size: 13px; flex-shrink: 0; display: none; }
       .temo-card { flex: 0 0 260px; padding: 20px 18px; }
+      .temo-track-wrap { gap: 16px; }
+    }
+    @media (max-width: 768px) {
+      /* Réalisations */
+      .real-header { flex-direction: column; align-items: center; text-align: center; gap: 16px; padding: 0 24px; margin-bottom: 28px; }
+      .real-title { font-size: clamp(22px, 6vw, 28px); text-align: center; }
+      .real-slide { flex: 0 0 90vw; max-width: 420px; }
+      .real-slide img { height: auto; min-height: 220px; }
+      .real-slider-wrap { padding: 0 12px; }
+      /* Témoignages */
+      .temo-card {
+        flex: 0 0 75vw;
+        max-width: 320px;
+        padding: 18px 20px 16px;
+      }
+      .temo-quote-icon { font-size: 36px; margin-bottom: 2px; margin-top: -4px; }
+      .temo-card-title { font-size: 13.5px; }
+      .temo-text { font-size: 12px; line-height: 1.65; margin-bottom: 14px; }
+      .temo-stars svg { width: 11px; height: 11px; }
+      .temo-note { font-size: 11px; }
+      .temo-author { padding-top: 12px; }
+      .temo-avatar-img { width: 32px; height: 32px; }
+      .temo-name { font-size: 12px; }
+      .temo-role { font-size: 11px; }
+      .temo-track-wrap { gap: 14px; }
     }
     @media (max-width: 600px) {
       header { width: calc(100% - 24px); top: 12px; height: 56px; padding: 0 14px; }
@@ -401,7 +424,8 @@
       .banner-btns { flex-direction: column; align-items: stretch; }
       .btn-primary, .btn-secondary { justify-content: center; }
       .banner-right { height: 90vw; min-height: 280px; }
-      .temo-wrap { padding: 0 20px; }
+      .temo-hero { padding: 0 20px; }
+      .temo-card { flex: 0 0 72vw; max-width: 300px; }
       #temoignages { padding: 60px 0 70px; }
     }
     @media (max-width: 480px) {
@@ -413,9 +437,15 @@
       .stat-num { font-size: 26px; }
       .stat-label { font-size: 11px; }
       #realisations { padding: 40px 0; }
-      .real-header { padding: 0 20px; }
-      .real-slider-wrap { padding: 0 48px; }
-      .real-tabs { padding: 0 20px; }
+      .real-header { padding: 0 16px; }
+      .real-slider-wrap { padding: 0 8px; }
+      .real-slide { flex: 0 0 94vw; }
+      .real-tabs { padding: 0 16px; gap: 10px; }
+      .real-tab { padding: 10px 18px; font-size: 13px; }
+      .temo-card { flex: 0 0 70vw; max-width: 280px; padding: 16px 15px; }
+      .temo-quote-icon { font-size: 32px; }
+      .temo-card-title { font-size: 13px; }
+      .temo-text { font-size: 12px; }
     }
   </style>
 </head>
