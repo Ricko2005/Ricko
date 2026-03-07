@@ -74,39 +74,10 @@
     .step-index { width: 36px; height: 3px; background: var(--blue); border-radius: 2px; }
     .step-title { font-size: clamp(26px, 2.8vw, 38px); font-weight: 700; color: var(--black); line-height: 1.15; letter-spacing: -0.5px; }
     .step-text { font-size: 14px; color: #999; line-height: 1.8; max-width: 380px; }
-
-    /* ── SVG Number Draw Animation ── */
-    .step-num-svg {
-      width: clamp(160px, 18vw, 240px);
-      height: auto;
-      overflow: visible;
-      opacity: 0.5;
-    }
-    .step-num-svg text {
-      font-family: 'Unbounded', sans-serif;
-      font-weight: 900;
-      font-size: 200px;
-      fill: none;
-      stroke: var(--blue);
-      stroke-width: 2px;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      letter-spacing: -6px;
-      stroke-dasharray: 9999;
-      stroke-dashoffset: 9999;
-      transition: none;
-    }
-    .step-num-svg.drawn text {
-      stroke-dashoffset: 0;
-    }
-    /* Subtle glow effect while drawing */
-    .step-num-svg.drawing text {
-      filter: drop-shadow(0 0 8px rgba(43, 108, 176, 0.4));
-    }
-    .step-num-svg.drawn text {
-      stroke-dashoffset: 0;
-      filter: none;
-    }
+    .step-num-svg { width: clamp(160px, 18vw, 240px); height: auto; overflow: visible; opacity: 0.5; }
+    .step-num-svg text { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 200px; fill: none; stroke: var(--blue); stroke-width: 2px; stroke-linecap: round; stroke-linejoin: round; letter-spacing: -6px; stroke-dasharray: 9999; stroke-dashoffset: 9999; transition: none; }
+    .step-num-svg.drawing text { filter: drop-shadow(0 0 8px rgba(43,108,176,0.4)); }
+    .step-num-svg.drawn text { stroke-dashoffset: 0; filter: none; }
 
     #about { display: flex; align-items: center; gap: 60px; padding: 80px; max-width: 1100px; margin: 0 auto; }
     #about * { font-family: 'DM Sans', sans-serif; }
@@ -124,7 +95,7 @@
     .btn-about:hover { background: var(--blue-dark); color: #fff; }
 
     #realisations { width: 100%; padding: 80px 0 48px; background: #fff; }
-    .real-header { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto 48px;  }
+    .real-header { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto 48px; }
     .real-title { font-family: 'DM Sans', sans-serif; font-size: clamp(26px, 3vw, 42px); font-weight: 800; color: var(--black); line-height: 1.2; letter-spacing: -1px; }
     .real-title span { color: var(--blue); }
     .btn-real { display: inline-flex; align-items: center; gap: 8px; padding: 15px 30px; background: var(--blue-dark); color: #fff; border: none; border-radius: 50px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.25s; white-space: nowrap; flex-shrink: 0; }
@@ -135,7 +106,7 @@
     .real-arrow:disabled { opacity: 0.3; cursor: default; transform: translateY(-50%) scale(1); }
     #realPrev { left: 8px; } #realNext { right: 8px; }
     .real-slider-viewport { overflow: hidden; width: 100%; }
-    .real-slider { display: flex; gap: 24px; transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1); }
+    .real-slider { display: flex; gap: 24px; transition: transform 0.9s cubic-bezier(0.4,0,0.2,1); }
     .real-slide { flex: 0 0 calc(50% - 12px); flex-shrink: 0; border-radius: 24px; overflow: hidden; background: transparent; }
     .real-slide img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
     .real-tabs { display: flex; gap: 12px; margin: 32px auto 0; flex-wrap: wrap; padding: 0 80px; max-width: 1100px; justify-content: center; }
@@ -143,6 +114,217 @@
     .real-tab.active { background: var(--blue-dark); border-color: var(--blue-dark); color: #fff; }
     .real-tab:hover:not(.active) { border-color: var(--black); color: var(--black); }
 
+    /* ════════════════════════════════════════
+       TÉMOIGNAGES — style photo premium
+       ════════════════════════════════════════ */
+    #temoignages {
+      background: linear-gradient(160deg, #0d1f3c 0%, #0f2748 60%, #0a1a30 100%);
+      padding: 90px 0 100px;
+      overflow: hidden;
+      position: relative;
+    }
+    #temoignages::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 500px;
+      background: radial-gradient(ellipse, rgba(59,130,246,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    /* En-tête centré */
+    .temo-hero {
+      text-align: center;
+      padding: 0 40px;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 2;
+    }
+    .temo-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .temo-label::before, .temo-label::after {
+      content: '';
+      display: block;
+      width: 28px; height: 2px;
+      background: var(--blue);
+      border-radius: 2px;
+    }
+    .temo-label span {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .temo-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(20px, 2.4vw, 32px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+    }
+    .temo-title span { color: var(--blue); }
+    .temo-subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.7;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    /* Rangées scroll */
+    .temo-track-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+    }
+    .temo-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+    }
+    .temo-track-inner { display: flex; gap: 20px; }
+    @keyframes scrollLeft {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes scrollRight {
+      0%   { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+    .temo-track.row1 { animation: scrollLeft 38s linear infinite; }
+    .temo-track.row2 { animation: scrollRight 38s linear infinite; }
+    .temo-track:hover { animation-play-state: paused; }
+
+    /* ── Carte ── */
+    .temo-card {
+      flex: 0 0 360px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(96,165,250,0.15);
+      border-radius: 20px;
+      padding: 28px 26px 24px;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .temo-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(96,165,250,0.25), transparent);
+    }
+    .temo-card:hover {
+      background: rgba(96,165,250,0.08);
+      border-color: rgba(96,165,250,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(15,39,72,0.5);
+    }
+    .temo-quote-icon {
+      font-size: 52px;
+      line-height: 1;
+      color: rgba(96,165,250,0.3);
+      font-family: Georgia, serif;
+      font-weight: 900;
+      margin-bottom: 4px;
+      margin-top: -8px;
+    }
+    .temo-card-top { margin-bottom: 10px; }
+    .temo-stars {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 10px;
+    }
+    .temo-stars svg { width: 13px; height: 13px; }
+    .temo-note {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      font-family: 'DM Sans', sans-serif;
+      margin-left: 5px;
+    }
+    .temo-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.35;
+      letter-spacing: -0.2px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .temo-text {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+      font-family: 'DM Sans', sans-serif;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    .temo-avatar-img {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      flex-shrink: 0;
+      border: 2px solid rgba(96,165,250,0.3);
+    }
+    .temo-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(96,165,250,0.12);
+      margin-top: auto;
+    }
+    .temo-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 13px;
+      font-weight: 800;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .av-blue  { background: rgba(59,130,246,0.2);  color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+    .av-teal  { background: rgba(20,184,166,0.2);  color: #2dd4bf; border: 1px solid rgba(20,184,166,0.3); }
+    .av-violet{ background: rgba(139,92,246,0.2);  color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+    .av-rose  { background: rgba(244,63,94,0.2);   color: #fb7185; border: 1px solid rgba(244,63,94,0.3); }
+    .av-amber { background: rgba(245,158,11,0.2);  color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+    .av-green { background: rgba(34,197,94,0.2);   color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+    .av-indigo{ background: rgba(99,102,241,0.2);  color: #818cf8; border: 1px solid rgba(99,102,241,0.3); }
+    .av-orange{ background: rgba(249,115,22,0.2);  color: #fb923c; border: 1px solid rgba(249,115,22,0.3); }
+    .temo-info { display: flex; flex-direction: column; gap: 2px; }
+    .temo-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      font-family: 'DM Sans', sans-serif;
+    }
+    .temo-role {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.35);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* ══════════════════════════════════ */
     #faq { background: var(--bg); padding: 60px 0 80px; }
     .faq-inner { max-width: 1100px; margin: 0 auto; padding: 0 80px; }
     .faq-label { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
@@ -181,7 +363,7 @@
       .service-step, .service-step.reverse { grid-template-columns: 1fr; min-height: auto; }
       .service-step .step-visual, .service-step.reverse .step-visual { display: none; }
       .service-step .step-content, .service-step.reverse .step-content { order: 1; padding: 24px 20px 28px; position: relative; overflow: hidden; }
-      .service-step .step-content::before, .service-step.reverse .step-content::before { content: attr(data-num); position: absolute; right: 16px; bottom: 12px; font-family: 'Unbounded', sans-serif; font-size: 56px; font-weight: 900; color: rgba(43, 108, 176, 0.06); line-height: 1; letter-spacing: -2px; pointer-events: none; user-select: none; z-index: 0; }
+      .service-step .step-content::before, .service-step.reverse .step-content::before { content: attr(data-num); position: absolute; right: 16px; bottom: 12px; font-family: 'Unbounded', sans-serif; font-size: 56px; font-weight: 900; color: rgba(43,108,176,0.06); line-height: 1; letter-spacing: -2px; pointer-events: none; user-select: none; z-index: 0; }
       .service-step .step-index, .service-step .step-title, .service-step .step-text { position: relative; z-index: 1; }
       #about { gap: 24px; margin: 0 16px; }
       #realisations { padding: 60px 0 40px; }
@@ -195,6 +377,10 @@
       #faq { padding: 48px 0 60px; }
       .faq-title { font-size: 24px; margin-bottom: 32px; }
       .faq-question span { font-size: 15px; }
+      .temo-wrap { padding: 0 28px; }
+      .temo-head { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .temo-score { align-items: flex-start; }
+      .temo-card { flex: 0 0 300px; }
     }
     @media (max-width: 860px) {
       #about { flex-direction: column; padding: 60px 32px; align-items: center; text-align: center; }
@@ -206,6 +392,7 @@
       .real-header { flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; padding: 0 20px; margin-bottom: 28px; }
       .real-title { font-size: clamp(18px, 5vw, 24px); line-height: 1.25; }
       .btn-real { padding: 11px 18px; font-size: 13px; flex-shrink: 0; display: none; }
+      .temo-card { flex: 0 0 260px; padding: 20px 18px; }
     }
     @media (max-width: 600px) {
       header { width: calc(100% - 24px); top: 12px; height: 56px; padding: 0 14px; }
@@ -214,6 +401,8 @@
       .banner-btns { flex-direction: column; align-items: stretch; }
       .btn-primary, .btn-secondary { justify-content: center; }
       .banner-right { height: 90vw; min-height: 280px; }
+      .temo-wrap { padding: 0 20px; }
+      #temoignages { padding: 60px 0 70px; }
     }
     @media (max-width: 480px) {
       #about { padding: 40px 20px; }
@@ -244,6 +433,7 @@
     </a>
     <nav class="nav-right">
       <a href="#realisations">Réalisations</a>
+      <a href="#temoignages">Témoignages</a>
       <a href="#faq">FAQ</a>
       <button class="btn-contact">Me Contacter</button>
       <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -257,6 +447,7 @@
     <a href="#about">À Propos</a>
     <a href="#services">Services</a>
     <a href="#realisations">Réalisations</a>
+    <a href="#temoignages">Témoignages</a>
     <a href="#faq">FAQ</a>
     <button class="mobile-btn">Me Contacter</button>
   </div>
@@ -312,7 +503,6 @@
 
   <section id="services">
     <div class="section-label"><span>Mes Services</span></div>
-
     <div class="service-step">
       <div class="step-content" data-num="01">
         <div class="step-index"></div>
@@ -320,13 +510,11 @@
         <p class="step-text">Donnez une image professionnelle à votre activité. Je conçois des sites vitrines élégants, rapides et optimisés pour le référencement, qui inspirent confiance dès le premier regard.</p>
       </div>
       <div class="step-visual">
-        <!-- SVG draw number -->
         <svg class="step-num-svg" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="200" dominant-baseline="auto">01</text>
         </svg>
       </div>
     </div>
-
     <div class="service-step reverse">
       <div class="step-content" data-num="02">
         <div class="step-index"></div>
@@ -339,7 +527,6 @@
         </svg>
       </div>
     </div>
-
     <div class="service-step">
       <div class="step-content" data-num="03">
         <div class="step-index"></div>
@@ -352,7 +539,6 @@
         </svg>
       </div>
     </div>
-
     <div class="service-step reverse">
       <div class="step-content" data-num="04">
         <div class="step-index"></div>
@@ -382,8 +568,7 @@
       <button class="btn-about">
         Discutons de votre projet
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12"/>
-          <polyline points="12 5 19 12 12 19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
         </svg>
       </button>
     </div>
@@ -395,8 +580,7 @@
       <button class="btn-real">
         En savoir plus
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12"/>
-          <polyline points="12 5 19 12 12 19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
         </svg>
       </button>
     </div>
@@ -415,92 +599,334 @@
     </div>
   </section>
 
+  <!-- ══════════════════ TÉMOIGNAGES ══════════════════ -->
+  <section id="temoignages">
+
+    <div class="temo-hero">
+      <div class="temo-label"><span>Témoignages</span></div>
+      <h2 class="temo-title">Mes clients parlent mieux<br>que moi de <span>mes résultats</span></h2>
+      <p class="temo-subtitle">La satisfaction client est au cœur de mon processus.<br>Découvrez ce qu'ils en disent.</p>
+    </div>
+
+    <div class="temo-track-wrap">
+      <div class="temo-track row1">
+        <div class="temo-track-inner">
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Un partenaire digital de confiance !</h3>
+          </div>
+          <p class="temo-text">Romaric a conçu notre site vitrine corporate avec un professionnalisme remarquable. Le rendu reflète parfaitement l'image de Cahetel Group. Délais respectés, communication irréprochable.</p>
+          <div class="temo-author">
+            <img src="images/WhatsApp-Image-2025-07-24-a-14.21.13_bbe5d51d.jpg" alt="Directeur Général - Cahetel Group" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">Directeur Général</span>
+              <span class="temo-role">Cahetel Group Sarl</span>
+            </div>
+          </div>
+        </div>
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Notre centre a enfin sa vitrine digitale !</h3>
+          </div>
+          <p class="temo-text">Grâce à Romaric, notre centre dispose d'une plateforme complète : formations, inscriptions, blog. Livré rapidement, nos apprenants s'y retrouvent facilement.</p>
+          <div class="temo-author">
+            <img src="images/SOUTENANCE-TULIP-73-1024x683.jpg" alt="Fondateur - La Tulipe" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">Fondateur</span>
+              <span class="temo-role">Centre de Formation La Tulipe</span>
+            </div>
+          </div>
+        </div>
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Exceptional work, delivered on time!</h3>
+          </div>
+          <p class="temo-text">Working with Romaric was seamless. He built our SaaS landing page with a clean, conversion-focused design that truly represents Nigercloud's brand. Highly recommended.</p>
+          <div class="temo-author">
+            <img src="images/NigerCloud-removebg-preview.png" alt="CEO - Nigercloud" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">CEO</span>
+              <span class="temo-role">Nigercloud · Niger</span>
+            </div>
+          </div>
+        </div>
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Mes ventes ont doublé en 3 semaines !</h3>
+          </div>
+          <p class="temo-text">Romaric m'a livré une boutique en ligne qui dépasse mes attentes. Le tunnel d'achat est fluide, le design professionnel. Le retour sur investissement a été immédiat.</p>
+          <div class="temo-author">
+            <img src="images/client-ecommerce.jpg" alt="Gérante - Boutique Cotonou" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">Gérante</span>
+              <span class="temo-role">Boutique e-commerce · Cotonou</span>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="temo-track-inner" aria-hidden="true">
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Un partenaire digital de confiance !</h3>
+          </div>
+          <p class="temo-text">Romaric a conçu notre site vitrine corporate avec un professionnalisme remarquable. Le rendu reflète parfaitement l'image de Cahetel Group. Délais respectés, communication irréprochable.</p>
+          <div class="temo-author">
+            <img src="images/WhatsApp-Image-2025-07-24-a-14.21.13_bbe5d51d.jpg" alt="Directeur Général - Cahetel Group" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">Directeur Général</span>
+              <span class="temo-role">Cahetel Group Sarl</span>
+            </div>
+          </div>
+        </div>
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Notre centre a enfin sa vitrine digitale !</h3>
+          </div>
+          <p class="temo-text">Grâce à Romaric, notre centre dispose d'une plateforme complète : formations, inscriptions, blog. Livré rapidement, nos apprenants s'y retrouvent facilement.</p>
+          <div class="temo-author">
+            <img src="images/SOUTENANCE-TULIP-73-1024x683.jpg" alt="Fondateur - La Tulipe" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">Fondateur</span>
+              <span class="temo-role">Centre de Formation La Tulipe</span>
+            </div>
+          </div>
+        </div>
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Exceptional work, delivered on time!</h3>
+          </div>
+          <p class="temo-text">Working with Romaric was seamless. He built our SaaS landing page with a clean, conversion-focused design that truly represents Nigercloud's brand. Highly recommended.</p>
+          <div class="temo-author">
+            <img src="images/NigerCloud-removebg-preview.png" alt="CEO - Nigercloud" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">CEO</span>
+              <span class="temo-role">Nigercloud · Niger</span>
+            </div>
+          </div>
+        </div>
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Mes ventes ont doublé en 3 semaines !</h3>
+          </div>
+          <p class="temo-text">Romaric m'a livré une boutique en ligne qui dépasse mes attentes. Le tunnel d'achat est fluide, le design professionnel. Le retour sur investissement a été immédiat.</p>
+          <div class="temo-author">
+            <img src="images/client-ecommerce.jpg" alt="Gérante - Boutique Cotonou" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">Gérante</span>
+              <span class="temo-role">Boutique e-commerce · Cotonou</span>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="temo-track row2">
+        <div class="temo-track-inner">
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Un partenaire digital de confiance !</h3>
+          </div>
+          <p class="temo-text">Romaric a conçu notre site vitrine corporate avec un professionnalisme remarquable. Le rendu reflète parfaitement l'image de Cahetel Group. Délais respectés, communication irréprochable.</p>
+          <div class="temo-author">
+            <img src="images/WhatsApp-Image-2025-07-24-a-14.21.13_bbe5d51d.jpg" alt="Directeur Général - Cahetel Group" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">Directeur Général</span>
+              <span class="temo-role">Cahetel Group Sarl</span>
+            </div>
+          </div>
+        </div>
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Notre centre a enfin sa vitrine digitale !</h3>
+          </div>
+          <p class="temo-text">Grâce à Romaric, notre centre dispose d'une plateforme complète : formations, inscriptions, blog. Livré rapidement, nos apprenants s'y retrouvent facilement.</p>
+          <div class="temo-author">
+            <img src="images/SOUTENANCE-TULIP-73-1024x683.jpg" alt="Fondateur - La Tulipe" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">Fondateur</span>
+              <span class="temo-role">Centre de Formation La Tulipe</span>
+            </div>
+          </div>
+        </div>
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Exceptional work, delivered on time!</h3>
+          </div>
+          <p class="temo-text">Working with Romaric was seamless. He built our SaaS landing page with a clean, conversion-focused design that truly represents Nigercloud's brand. Highly recommended.</p>
+          <div class="temo-author">
+            <img src="images/NigerCloud-removebg-preview.png" alt="CEO - Nigercloud" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">CEO</span>
+              <span class="temo-role">Nigercloud · Niger</span>
+            </div>
+          </div>
+        </div>
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Mes ventes ont doublé en 3 semaines !</h3>
+          </div>
+          <p class="temo-text">Romaric m'a livré une boutique en ligne qui dépasse mes attentes. Le tunnel d'achat est fluide, le design professionnel. Le retour sur investissement a été immédiat.</p>
+          <div class="temo-author">
+            <img src="images/client-ecommerce.jpg" alt="Gérante - Boutique Cotonou" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">Gérante</span>
+              <span class="temo-role">Boutique e-commerce · Cotonou</span>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="temo-track-inner" aria-hidden="true">
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Un partenaire digital de confiance !</h3>
+          </div>
+          <p class="temo-text">Romaric a conçu notre site vitrine corporate avec un professionnalisme remarquable. Le rendu reflète parfaitement l'image de Cahetel Group. Délais respectés, communication irréprochable.</p>
+          <div class="temo-author">
+            <img src="images/WhatsApp-Image-2025-07-24-a-14.21.13_bbe5d51d.jpg" alt="Directeur Général - Cahetel Group" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">Directeur Général</span>
+              <span class="temo-role">Cahetel Group Sarl</span>
+            </div>
+          </div>
+        </div>
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Notre centre a enfin sa vitrine digitale !</h3>
+          </div>
+          <p class="temo-text">Grâce à Romaric, notre centre dispose d'une plateforme complète : formations, inscriptions, blog. Livré rapidement, nos apprenants s'y retrouvent facilement.</p>
+          <div class="temo-author">
+            <img src="images/SOUTENANCE-TULIP-73-1024x683.jpg" alt="Fondateur - La Tulipe" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">Fondateur</span>
+              <span class="temo-role">Centre de Formation La Tulipe</span>
+            </div>
+          </div>
+        </div>
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Exceptional work, delivered on time!</h3>
+          </div>
+          <p class="temo-text">Working with Romaric was seamless. He built our SaaS landing page with a clean, conversion-focused design that truly represents Nigercloud's brand. Highly recommended.</p>
+          <div class="temo-author">
+            <img src="images/NigerCloud-removebg-preview.png" alt="CEO - Nigercloud" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">CEO</span>
+              <span class="temo-role">Nigercloud · Niger</span>
+            </div>
+          </div>
+        </div>
+        <div class="temo-card">
+          <div class="temo-quote-icon">"</div>
+          <div class="temo-card-top">
+            <div class="temo-stars"><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="#fbbf24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="temo-note">5.0</span></div>
+            <h3 class="temo-card-title">Mes ventes ont doublé en 3 semaines !</h3>
+          </div>
+          <p class="temo-text">Romaric m'a livré une boutique en ligne qui dépasse mes attentes. Le tunnel d'achat est fluide, le design professionnel. Le retour sur investissement a été immédiat.</p>
+          <div class="temo-author">
+            <img src="images/client-ecommerce.jpg" alt="Gérante - Boutique Cotonou" class="temo-avatar-img">
+            <div class="temo-info">
+              <span class="temo-name">Gérante</span>
+              <span class="temo-role">Boutique e-commerce · Cotonou</span>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!-- ══════════════════ FIN TÉMOIGNAGES ══════════════════ -->
+
   <section id="faq">
     <div class="faq-inner">
       <div class="faq-label"><span>FAQ</span></div>
       <h2 class="faq-title">Tout ce que vous voulez<br>savoir, <span>sans détour</span></h2>
       <div class="faq-list">
-
         <div class="faq-item open">
           <button class="faq-question">
             <span>Est-ce qu'un site web est vraiment utile pour mon activité ?</span>
             <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>Absolument. Aujourd'hui, un client qui ne vous trouve pas en ligne passe directement chez un concurrent. Un site bien fait, c'est votre meilleur commercial — disponible 24h/24, 7j/7, même quand vous dormez. Il inspire confiance, répond aux questions de vos prospects et les pousse à vous contacter.</p>
-          </div>
+          <div class="faq-answer"><p>Absolument. Aujourd'hui, un client qui ne vous trouve pas en ligne passe directement chez un concurrent. Un site bien fait, c'est votre meilleur commercial — disponible 24h/24, 7j/7, même quand vous dormez.</p></div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question">
             <span>Je n'ai pas un grand budget. Est-ce qu'on peut quand même travailler ensemble ?</span>
             <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>Oui, tout à fait. Chaque projet est discuté selon vos besoins réels et votre situation. Mon objectif n'est pas de vous vendre le maximum, mais de vous livrer exactement ce dont vous avez besoin pour avancer. On commence par un échange gratuit pour voir ce qui correspond à votre réalité.</p>
-          </div>
+          <div class="faq-answer"><p>Oui, tout à fait. Chaque projet est discuté selon vos besoins réels et votre situation. Mon objectif n'est pas de vous vendre le maximum, mais de vous livrer exactement ce dont vous avez besoin pour avancer.</p></div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question">
             <span>Combien de temps faut-il pour avoir mon site ?</span>
             <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>Ça dépend de la complexité du projet. Une page simple peut être livrée en moins de 2 semaines. Un projet plus complet prendra un peu plus de temps — mais je vous donne toujours une date précise dès le départ, et je la respecte. Pas de mauvaises surprises.</p>
-          </div>
+          <div class="faq-answer"><p>Ça dépend de la complexité du projet. Une page simple peut être livrée en moins de 2 semaines. Un projet plus complet prendra un peu plus de temps — mais je vous donne toujours une date précise dès le départ, et je la respecte.</p></div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question">
             <span>Est-ce que je pourrai gérer mon site tout seul après la livraison ?</span>
             <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>Oui. Je m'assure que vous repartez avec les clés en main. Je vous explique comment modifier vos contenus, ajouter des photos, mettre à jour vos infos — sans avoir besoin de moi à chaque fois. L'autonomie de mes clients, c'est une priorité.</p>
-          </div>
+          <div class="faq-answer"><p>Oui. Je m'assure que vous repartez avec les clés en main. Je vous explique comment modifier vos contenus, ajouter des photos, mettre à jour vos infos — sans avoir besoin de moi à chaque fois.</p></div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question">
             <span>Et si j'ai besoin d'aide après la livraison ?</span>
             <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>Je reste disponible. Les 30 premiers jours après la livraison, toute correction est prise en charge sans frais supplémentaires. Après ça, on peut mettre en place un suivi selon vos besoins. Vous n'êtes jamais laissé seul face à votre site.</p>
-          </div>
+          <div class="faq-answer"><p>Je reste disponible. Les 30 premiers jours après la livraison, toute correction est prise en charge sans frais supplémentaires. Vous n'êtes jamais laissé seul face à votre site.</p></div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question">
             <span>Mon site sera-t-il visible sur Google ?</span>
             <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>Chaque site livré est optimisé pour les bases du référencement : structure propre, vitesse de chargement, compatibilité mobile, balises bien réglées. Ce sont les fondations indispensables pour que Google vous remarque. Pour aller encore plus loin, un accompagnement SEO avancé est aussi possible.</p>
-          </div>
+          <div class="faq-answer"><p>Chaque site livré est optimisé pour les bases du référencement : structure propre, vitesse de chargement, compatibilité mobile, balises bien réglées. Pour aller encore plus loin, un accompagnement SEO avancé est aussi possible.</p></div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question">
             <span>Proposez-vous un paiement en plusieurs fois ?</span>
             <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>Oui, c'est possible. Pour faciliter les choses, je propose souvent un paiement en deux ou trois fois selon le budget et la durée du projet. Tout est clair dès le devis, pas de surprise.</p>
-          </div>
+          <div class="faq-answer"><p>Oui, c'est possible. Je propose souvent un paiement en deux ou trois fois selon le budget et la durée du projet. Tout est clair dès le devis, pas de surprise.</p></div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question">
             <span>Mon site devrait-il être disponible en plusieurs langues ?</span>
             <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>Ça dépend de votre clientèle cible. Si vous visez un public local uniquement, une seule langue suffit largement. En revanche, si vous avez des clients internationaux ou souhaitez vous développer à l'export, un site multilingue est un vrai atout. C'est une option que je peux intégrer dès la conception — il vaut mieux y penser au départ plutôt qu'après coup.</p>
-          </div>
+          <div class="faq-answer"><p>Ça dépend de votre clientèle cible. Si vous visez un public local uniquement, une seule langue suffit. En revanche, si vous avez des clients internationaux, un site multilingue est un vrai atout que je peux intégrer dès la conception.</p></div>
         </div>
-
       </div>
     </div>
   </section>
@@ -529,60 +955,37 @@
       }
     });
 
-    // ── SVG Stroke Draw Animation au scroll ─────────────────────────
-    // On attend que la font Unbounded soit chargée pour calculer les dasharray corrects
+    // ── SVG Stroke Draw Animation ───────────────────────────────────
     document.fonts.ready.then(() => {
       const svgs = document.querySelectorAll('.step-num-svg');
-
-      // Pour chaque SVG, on calcule la vraie longueur du tracé via getComputedTextLength
-      // puis on initialise dasharray/dashoffset à cette valeur exacte
       svgs.forEach(svg => {
         const textEl = svg.querySelector('text');
-        // getComputedTextLength() donne la largeur du texte rendu
-        // On multiplie par un facteur pour approximer le périmètre total des glyphes
         let length;
-        try {
-          // getTotalLength n'existe pas sur <text>, on utilise une grande valeur sûre
-          length = textEl.getComputedTextLength() * 6;
-        } catch(e) {
-          length = 9999;
-        }
-        // S'assurer que la valeur est suffisamment grande
+        try { length = textEl.getComputedTextLength() * 6; } catch(e) { length = 9999; }
         length = Math.max(length, 9999);
         textEl.style.strokeDasharray = length;
         textEl.style.strokeDashoffset = length;
       });
-
-      // IntersectionObserver — déclenche le tracé quand le SVG entre dans le viewport
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const svg = entry.target;
             const textEl = svg.querySelector('text');
             setTimeout(() => {
-              // Active la transition lente AVANT de changer dashoffset
-              textEl.style.transition = 'stroke-dashoffset 4s cubic-bezier(0.5, 0, 0.2, 1)';
+              textEl.style.transition = 'stroke-dashoffset 4s cubic-bezier(0.5,0,0.2,1)';
               svg.classList.add('drawing');
-              // Force un reflow pour que la transition s'applique bien
               void textEl.getBoundingClientRect();
               textEl.style.strokeDashoffset = '0';
-              setTimeout(() => {
-                svg.classList.remove('drawing');
-                svg.classList.add('drawn');
-              }, 4100);
+              setTimeout(() => { svg.classList.remove('drawing'); svg.classList.add('drawn'); }, 4100);
             }, 150);
             observer.unobserve(svg);
           }
         });
-      }, {
-        threshold: 0.25,
-        rootMargin: '0px 0px -40px 0px'
-      });
-
+      }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
       svgs.forEach(svg => observer.observe(svg));
     });
 
-    // ── Données des projets par catégorie ───────────────────────────
+    // ── Données des projets ─────────────────────────────────────────
     const projets = {
       all: [
         { src: 'images/visuel1.png', alt: 'Site vitrine 1' },
@@ -615,12 +1018,9 @@
     let current = 0, total = 0, isTransitioning = false, autoTimer;
 
     function buildSlider(filter) {
-      clearInterval(autoTimer);
-      isTransitioning = false;
-      slider.style.transition = 'none';
-      slider.innerHTML = '';
-      const data = projets[filter] || [];
-      total = data.length;
+      clearInterval(autoTimer); isTransitioning = false;
+      slider.style.transition = 'none'; slider.innerHTML = '';
+      const data = projets[filter] || []; total = data.length;
       [data, data, data].forEach(set => {
         set.forEach(p => {
           const d = document.createElement('div');
@@ -648,7 +1048,7 @@
     slider.addEventListener('transitionend', () => {
       const allSlides = slider.querySelectorAll('.real-slide');
       const allTotal  = allSlides.length;
-      if (current <= total - 1)        { current += total; updateSlider(false); }
+      if (current <= total - 1) { current += total; updateSlider(false); }
       if (current >= allTotal - total) { current -= total; updateSlider(false); }
       isTransitioning = false;
     });
@@ -686,7 +1086,7 @@
       isSwiping = false; resetAuto();
     }, { passive: true });
 
-    // ── Filtrage par onglet ─────────────────────────────────────────
+    // ── Filtrage ────────────────────────────────────────────────────
     document.querySelectorAll('.real-tab').forEach(tab => {
       tab.addEventListener('click', () => {
         document.querySelectorAll('.real-tab').forEach(t => t.classList.remove('active'));
@@ -714,6 +1114,8 @@
     // ── Init ────────────────────────────────────────────────────────
     window.addEventListener('load', () => buildSlider('all'));
     window.addEventListener('resize', () => updateSlider(false));
+
+    // ── Scroll infini témoignages géré par CSS animation ──
   </script>
 </body>
 </html>
